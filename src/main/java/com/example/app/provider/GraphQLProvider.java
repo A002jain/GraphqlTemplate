@@ -1,5 +1,6 @@
 package com.example.app.provider;
 
+import com.example.app.fetcher.AuthorFetcher;
 import com.example.app.fetcher.BookFetcher;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
@@ -25,6 +26,9 @@ public class GraphQLProvider {
 
     @Autowired
     BookFetcher bookFetcher;
+
+    @Autowired
+    AuthorFetcher authorFetcher;
 
     private GraphQL graphQL;
 
@@ -52,6 +56,7 @@ public class GraphQLProvider {
         return RuntimeWiring.newRuntimeWiring()
                 .type(newTypeWiring("Query")
                         .dataFetcher("allBook",bookFetcher.findAll())
+                        .dataFetcher("allAuthor",authorFetcher.findAll())
                 ).build();
 
     }

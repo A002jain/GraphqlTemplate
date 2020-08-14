@@ -16,10 +16,6 @@ public class BookFetcher {
     @Resource
     BookService bookService;
     public DataFetcher<List<Book>> findAll() {
-        return new DataFetcher<List<Book>>() {
-            public List<Book> get(DataFetchingEnvironment dataFetchingEnvironment) throws Exception {
-                return bookService.findAll();
-            }
-        };
+        return dataFetchingEnvironment -> bookService.findAll();
     }
 }

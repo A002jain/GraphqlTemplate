@@ -16,15 +16,15 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@Bean
-	public BookRepository getBookRepository(){
-		return new BookRepositoryImpl();
-	}
-
-	@Bean
-	public BookFetcher getBookFetcher(){
-		return new BookFetcher();
-	}
+//	@Bean
+//	public BookRepository getBookRepository(){
+//		return new BookRepositoryImpl();
+//	}
+//
+//	@Bean
+//	public BookFetcher getBookFetcher(){
+//		return new BookFetcher();
+//	}
 
 
 }
