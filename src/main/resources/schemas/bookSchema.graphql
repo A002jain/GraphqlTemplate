@@ -1,15 +1,31 @@
 type Book{
     bookId: String
     bookName: String
-    author: Author
 }
 
 type Author{
     authorId: String
     authorName: String
+    book: Book
 }
 
 type Query{
     allBook: [Book]
     allAuthor: [Author]
+#    bookById(bookId: String): Book
+#    bookByName(bookName: String): Book
+#    bookByAuthorId(authorId:String): Author
+#    bookByAuthorName(authorName:String): Author
 }
+
+type Mutation{
+    createBook(bookId: String, bookName: String): Book
+    createAuthor(authorId: String, authorName: String): Author
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+

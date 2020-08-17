@@ -2,8 +2,8 @@ package com.example.app.fetcher;
 
 import com.example.app.model.Book;
 import com.example.app.service.BookService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import graphql.schema.DataFetcher;
-import graphql.schema.DataFetchingEnvironment;
 import org.springframework.stereotype.Component;
 
 
@@ -17,5 +17,13 @@ public class BookFetcher {
     BookService bookService;
     public DataFetcher<List<Book>> findAll() {
         return dataFetchingEnvironment -> bookService.findAll();
+    }
+
+    public DataFetcher<Book> save() {
+        return dataFetchingEnvironment -> {
+            ObjectMapper mapper = new ObjectMapper();
+            Book book =mapper.convertValue(dataFetchingEnvironment.getArguments(),Book.class);
+            return bookService.save(book);
+        };
     }
 }

@@ -1,17 +1,24 @@
 package com.example.app.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Book")
 public class Book {
+
+    @JsonProperty("bookId")
+    @Column(name = "bookId")
+    @Id
     private String bookId;
+
+    @JsonProperty("bookName")
+    @Column(name = "bookName")
     private String  bookName;
-    private Author author;
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
 
     public String getBookId() {
         return bookId;
