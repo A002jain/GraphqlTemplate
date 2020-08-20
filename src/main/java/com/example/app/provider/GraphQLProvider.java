@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.net.URL;
-
 import static graphql.schema.idl.TypeRuntimeWiring.newTypeWiring;
+
 @RestController
 @Component
 public class GraphQLProvider {
@@ -51,24 +51,24 @@ public class GraphQLProvider {
     private RuntimeWiring buildWiring() {
         return RuntimeWiring.newRuntimeWiring()
                 .type(queryBuilder())
-//                .type(dependencyBuilder())
                 .type(mutationBuilder())
-                .build();
+                .type(newTypeWiring("Author")
+                .dataFetcher("book",bookFetcher.findAllBookByAuthor())
+                ).build();
     }
     private TypeRuntimeWiring.Builder queryBuilder(){
         return newTypeWiring("Query")
                 .dataFetcher("allBook",bookFetcher.findAll())
-                .dataFetcher("allAuthor",authorFetcher.findAll());
+                .dataFetcher("bookById",bookFetcher.findBookByBookId())
+                .dataFetcher("bookByName",bookFetcher.findBookByName())
+                .dataFetcher("allAuthor",authorFetcher.findAll())
+                .dataFetcher("authorById",authorFetcher.findAuthorByAuthorId())
+                .dataFetcher("authorByName",authorFetcher.findAuthorByAuthorName());
     }
 
     private TypeRuntimeWiring.Builder mutationBuilder(){
         return newTypeWiring("Mutation")
                 .dataFetcher("createBook",bookFetcher.save())
                 .dataFetcher("createAuthor",authorFetcher.save());
-    }
-
-    private TypeRuntimeWiring.Builder dependencyBuilder(){
-        return newTypeWiring("Author")
-                .dataFetcher("author",authorFetcher.findAllAuthorForBook());
     }
 }

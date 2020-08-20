@@ -1,26 +1,30 @@
 type Book{
     bookId: String
     bookName: String
+    pages: Int
+    price: Float
+    rating: Float
+    author: Author
 }
 
 type Author{
     authorId: String
     authorName: String
-    book: Book
+    book: [Book]
 }
 
 type Query{
     allBook: [Book]
     allAuthor: [Author]
-#    bookById(bookId: String): Book
-#    bookByName(bookName: String): Book
-#    bookByAuthorId(authorId:String): Author
-#    bookByAuthorName(authorName:String): Author
+    bookById(bookId: String): Book
+    bookByName(bookName: String): Book
+    authorById(authorId:String): Author
+    authorByName(authorName:String): [Author]
 }
 
-type Mutation{
-    createBook(bookId: String, bookName: String): Book
-    createAuthor(authorId: String, authorName: String): Author
+type Mutation {
+    createBook(book:BookInput): Book
+    createAuthor(author:AuthorInput): Author
 }
 
 schema {
@@ -28,4 +32,17 @@ schema {
     mutation: Mutation
 }
 
+input BookInput {
+    bookId: String
+    bookName: String
+    pages: Int
+    price: Float
+    rating: Float
+    author: AuthorInput
+}
+
+input AuthorInput{
+    authorId: String
+    authorName: String
+}
 
