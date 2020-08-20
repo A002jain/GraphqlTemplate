@@ -3,7 +3,6 @@ package com.example.app.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "author") // user this name for query

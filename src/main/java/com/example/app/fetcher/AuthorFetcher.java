@@ -39,4 +39,13 @@ public class AuthorFetcher {
             return authorService.save(author);
         };
     }
+
+    public DataFetcher<Author> update() {
+        return dataFetchingEnvironment -> {
+            ObjectMapper mapper = new ObjectMapper();
+            Author author =mapper.convertValue(dataFetchingEnvironment.getArgument("author"),Author.class);
+            return authorService.update(author);
+        };
+    }
+
 }

@@ -69,6 +69,10 @@ public class GraphQLProvider {
     private TypeRuntimeWiring.Builder mutationBuilder(){
         return newTypeWiring("Mutation")
                 .dataFetcher("createBook",bookFetcher.save())
-                .dataFetcher("createAuthor",authorFetcher.save());
+                .dataFetcher("createAuthor",authorFetcher.save())
+                .dataFetcher("updateBook",bookFetcher.update())
+                .dataFetcher("updateAuthor",authorFetcher.update())
+                .dataFetcher("deleteBook",bookFetcher.delete())
+                .dataFetcher("deleteAuthor",bookFetcher.deleteAll());
     }
 }

@@ -47,4 +47,29 @@ public class BookFetcher {
             return bookService.save(book);
         };
     }
+
+
+    public DataFetcher<Book> update() {
+        return dataFetchingEnvironment -> {
+            ObjectMapper mapper = new ObjectMapper();
+            Book book =mapper.convertValue(dataFetchingEnvironment.getArgument("book"),Book.class);
+            return bookService.update(book);
+        };
+    }
+
+
+    public DataFetcher<Book> delete() {
+        return dataFetchingEnvironment -> {
+            String bookId = dataFetchingEnvironment.getArgument("bookId");
+            return bookService.delete(bookId);
+        };
+    }
+
+    public DataFetcher<Author> deleteAll() {
+        return dataFetchingEnvironment -> {
+            String authorId = dataFetchingEnvironment.getArgument("authorId");
+            bookService.deleteAll(authorId);
+            return null;
+        };
+    }
 }

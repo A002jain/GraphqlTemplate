@@ -7,6 +7,7 @@ type Book{
     author: Author
 }
 
+
 type Author{
     authorId: String
     authorName: String
@@ -25,6 +26,10 @@ type Query{
 type Mutation {
     createBook(book:BookInput): Book
     createAuthor(author:AuthorInput): Author
+    updateAuthor(author:AuthorInput): Author
+    updateBook(book: BookInput):Book
+    deleteBook(bookId: String):Book
+    deleteAuthor(authorId: String):Author
 }
 
 schema {
