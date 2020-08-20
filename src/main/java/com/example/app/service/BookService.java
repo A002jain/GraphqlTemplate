@@ -6,6 +6,7 @@ import com.example.app.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BookService {
@@ -63,5 +64,9 @@ public class BookService {
             }
         }
         return book;
+    }
+
+    public List<String> getListOfBookNameByAuthor(Author author){
+        return findAllBookByAuthor(author).stream().map(Book::getBookName).collect(Collectors.toList());
     }
 }

@@ -33,10 +33,10 @@ public class BookFetcher {
         };
     }
 
-    public DataFetcher<List<Book>> findAllBookByAuthor() {
+    public DataFetcher<List<String>> findAllBookByAuthor() {
         return dataFetchingEnvironment -> {
             Author author = dataFetchingEnvironment.getSource();
-            return bookService.findAllBookByAuthor(author);
+            return bookService.getListOfBookNameByAuthor(author);
         };
     }
 
@@ -72,4 +72,5 @@ public class BookFetcher {
             return null;
         };
     }
+
 }

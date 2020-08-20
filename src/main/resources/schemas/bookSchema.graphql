@@ -11,7 +11,7 @@ type Book{
 type Author{
     authorId: String
     authorName: String
-    book: [Book]
+    book: [String]
 }
 
 type Query{
