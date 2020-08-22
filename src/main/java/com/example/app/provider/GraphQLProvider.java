@@ -53,7 +53,7 @@ public class GraphQLProvider {
                 .type(queryBuilder())
                 .type(mutationBuilder())
                 .type(newTypeWiring("Author")
-                .dataFetcher("book",bookFetcher.findAllBookByAuthor())
+                .dataFetcher("bookByAuthor",bookFetcher.findAllBookByAuthor())
                 ).build();
     }
     private TypeRuntimeWiring.Builder queryBuilder(){

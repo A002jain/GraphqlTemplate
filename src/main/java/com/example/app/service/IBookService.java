@@ -1,5 +1,6 @@
 package com.example.app.service;
 
+import com.example.app.interfaces.BookService;
 import com.example.app.model.Author;
 import com.example.app.model.Book;
 import com.example.app.repository.BookRepository;
@@ -9,10 +10,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class BookService {
+public class IBookService implements BookService {
 
     @Autowired
     BookRepository bookRepository;
+
+    public IBookService(BookRepository bookRepository){
+        this.bookRepository = bookRepository;
+    }
 
     public List<Book> findAll(){ return bookRepository.findAll(); }
 

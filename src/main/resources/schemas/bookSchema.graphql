@@ -7,11 +7,13 @@ type Book{
     author: Author
 }
 
-
+type Invalid{
+    message: String
+}
 type Author{
     authorId: String
     authorName: String
-    book: [String]
+    bookByAuthor: [String]
 }
 
 type Query{

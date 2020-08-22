@@ -1,7 +1,7 @@
 package com.example.app.fetcher;
 
+import com.example.app.interfaces.AuthorService;
 import com.example.app.model.Author;
-import com.example.app.service.AuthorService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import graphql.schema.DataFetcher;
 import org.springframework.stereotype.Component;
