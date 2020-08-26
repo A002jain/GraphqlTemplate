@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "author") // user this name for query
+@Table(name = "author")
 public class Author {
 
     @JsonProperty("authorId")

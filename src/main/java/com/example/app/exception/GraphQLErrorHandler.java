@@ -13,11 +13,6 @@ public class GraphQLErrorHandler extends RuntimeException implements GraphQLErro
     }
 
     @Override
-    public String getMessage() {
-        return null;
-    }
-
-    @Override
     public List<SourceLocation> getLocations() {
         return null;
     }
